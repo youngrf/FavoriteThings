@@ -42,7 +42,7 @@ public:
 
 Favorite::Favorite()
 {
-	ItemNumber = ""; ItemName = ""; ItemQuantity = 0;
+	ItemNumber = ""; ItemName = ""; ItemQuantity = 0; ItemType = "";
 }
 
 Favorite::Favorite(string num, string name, int quantity, string type)
@@ -50,6 +50,7 @@ Favorite::Favorite(string num, string name, int quantity, string type)
 	ItemNumber = num;
 	ItemName = name;
 	ItemQuantity = quantity;
+	ItemType = type;
 }
 
 void Favorite::CaptureFavoriteItem()
@@ -58,17 +59,18 @@ void Favorite::CaptureFavoriteItem()
 	getline(cin, ItemNumber);
 	cout << "Item Name?  -->";
 	getline(cin, ItemName);
-	cout << "Quanity? -->";
-	cin >> ItemQuantity;
 	cout << "Item Type? -->";
 	getline(cin, ItemType);
+	cout << "Quanity? -->";
+	cin >> ItemQuantity;
+
 	cin.ignore();
 	cin.clear();
 }
 
 void Favorite::ShowFavoriteItem()
 {
-	cout << "Number : " << ItemNumber << " Name : " << ItemName << " Quantity : " << ItemQuantity << "Type:" << endl;
+	cout << "Number: " << ItemNumber << " Name: " << ItemName << " Quantity: " << ItemQuantity << "Type:" << ItemType << endl;
 }
 
 int Favorite::SaveFavoriteItem(ofstream& outfile)
@@ -154,7 +156,6 @@ int FavoriteList::SaveFavoriteList(string filename)
 	{
 		return WRITEERROR;
 	}
-	//TBD
 	return 0;
 }
 
